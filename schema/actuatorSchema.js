@@ -26,7 +26,8 @@ var mongoose = require('mongoose');
 var actuatorSchema = new mongoose.Schema({
     id : {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     ipaddress : {
         type: String,
@@ -34,11 +35,11 @@ var actuatorSchema = new mongoose.Schema({
     },
     name  : {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description : {
-        type: String,
-        required: true
+        type: String
     },
     active : {
         type: Boolean,

@@ -27,11 +27,13 @@ var cloudproviderSchema = require('./cloudproviderSchema.js');
 var sensorSchema = new mongoose.Schema({
     id : {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     name  : {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description : {
         type: String,
