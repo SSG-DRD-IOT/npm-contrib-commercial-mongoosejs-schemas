@@ -1,6 +1,6 @@
 {
     "name": "intel-commerical-edge-network-database-models",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Model Objects that allow access to the gateways local database",
     "main": "index.js",
     "scripts": {
