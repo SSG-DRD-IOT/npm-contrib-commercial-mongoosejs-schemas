@@ -27,8 +27,6 @@ var trigger_fixtures = {
         id : "FanOn",
         name : "FanOn",
         sensor_id : "Temperature",
-        actuator_id : "Fan",
-        validator_id : "Sound",
         condition : ">80",
         triggerFunc: "on",
         active: true
@@ -39,8 +37,6 @@ var trigger_fixtures = {
         id : "FanOnTrue",
         name : "FanOn",
         sensor_id : "Temperature",
-        actuator_id : "Fan",
-        validator_id : "Sound",
         condition : "( function() { return true; } )",
         triggerFunc: "on",
         active: true
@@ -51,8 +47,6 @@ var trigger_fixtures = {
         id : "FanOnTrue",
         name : "FanOn",
         sensor_id : "Temperature",
-        actuator_id : "Fan",
-        validator_id : "Sound",
         condition : "( function() { return false; } )",
         triggerFunc: "on",
         active: true
@@ -62,8 +56,6 @@ var trigger_fixtures = {
         id : "FanOnTrue",
         name : "FanOn",
         sensor_id : "temperature",
-        actuator_id : "fan",
-        validator_id : "sound",
         condition : "( function(arg) { return arg; } )",
         triggerFunc: "on",
         active: true
@@ -73,8 +65,6 @@ var trigger_fixtures = {
         id : "FanOnTrue",
         name : "FanOn",
         sensor_id : "temperature",
-        actuator_id : "fan",
-        validator_id : "sound",
         condition : "( function(temperature) { return temperature > 27; } )",
         triggerFunc: "on",
         active: true
@@ -84,8 +74,6 @@ var trigger_fixtures = {
         id : "FanOnTrue",
         name : "FanOn",
         sensor_id : "temperature",
-        actuator_id : "fan",
-        validator_id : "sound",
         condition : "( function(temperature) { return temperature < 20; } )",
         triggerFunc: "on",
         active: true

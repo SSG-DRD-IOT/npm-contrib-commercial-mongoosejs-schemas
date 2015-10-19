@@ -36,14 +36,6 @@ var triggerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    actuator_id : {
-        type: String,
-        required: true
-    },
-    validator_id : {
-        type: String,
-        required: true
-    },
     condition : {
         type: String,
         required: true
