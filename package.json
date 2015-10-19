@@ -1,6 +1,6 @@
 {
     "name": "intel-commerical-edge-network-database-models",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "Model Objects that allow access to the gateways local database",
     "main": "index.js",
     "scripts": {
@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "lodash": "^3.10.0",
-        "mongoose": "^4.1.0"
+        "mongoose": "4.1.0"
     },
     "author": "Intel",
     "license": "MIT"
