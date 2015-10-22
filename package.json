@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "lodash": "^3.10.0",
-        "mongoose": "4.1.0"
+        "mongoose": "^4.1.0"
     },
     "author": "Intel",
     "license": "MIT"
