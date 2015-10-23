@@ -58,4 +58,11 @@ var sensorSchema = new mongoose.Schema({
     cloudproviders : [ cloudproviderSchema ]
 });
 
+sensorSchema.methods.json = function (scope, args) {
+    return {
+        sensor_id: this.sensor_id,
+        value: this.value,
+        timestamp: Date.now()
+    }
+};
 module.exports = sensorSchema;
