@@ -23,19 +23,21 @@
  */
 var mongoose = require('mongoose');
 var _ = require('lodash');
-var config = require('../config.json');
+//var config = require('../config.json');
 
-mongoose.connect(config.mongodb.uri);
+mongoose.connect("mongodb://localhost/iotdemo");
+//mongoose.connect(config.mongodb.uri);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 
 // Import the Database Model Objects
-//var DataModel = require('../../../../commercial-edge-network-database').DataModel;
-//var SensorCloudModel = require('../../../../commercial-edge-network-database').SensorCloudModel;
-var TriggerModel = require('../../../../commercial-edge-network-database').TriggerModel;
-var SensorModel = require('../../../../commercial-edge-network-database').SensorModel;
-var ActuatorModel = require('../../../../commercial-edge-network-database').ActuatorModel;
+//var DataModel = require('../index.js').DataModel;
+//var SensorCloudModel = require('../index.js').SensorCloudModel;
+
+var TriggerModel = require('../index.js').TriggerModel;
+var SensorModel = require('../index.js').SensorModel;
+var ActuatorModel = require('../index.js').ActuatorModel;
 
 var actuators = [
     {
@@ -91,10 +93,10 @@ console.log("Before trigger definitions");
 
 var triggers = [
     {
-        id : "temperature_greater_than_27",
-        name : "temperature_greater_than_27",
-        sensor_id : "temperature",
-        condition :  "( function(sensor_value) { return this.temperature_greater_than_27_condition(sensor_value) } )",
+        id : "temperature_changed_condition",
+        name : "temperature_changed_condition",
+        sensor_id : "temperature2",
+        condition :  "( function(sensor_value) { return this.temperature_changed_condition(sensor_value) } )",
         triggerFunc: "( function() { this.temperature_too_hot(); })",
         active: true
     },
@@ -151,6 +153,9 @@ var triggers = [
         active: true
     }];
 
+db.once('open', function (callback) {
+    console.log("Connection to MongoDB successful");
+
 TriggerModel.remove({}, function() {
     console.log("Removing document");
 });
@@ -162,9 +167,6 @@ SensorModel.remove({},  function() {
 ActuatorModel.remove({},  function() {
    console.log("Removing document");
 });
-
-db.once('open', function (callback) {
-    console.log("Connection to MongoDB successful");
 
     _.forEach(triggers,
               function(triggerJSON) {

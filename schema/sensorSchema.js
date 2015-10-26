@@ -63,6 +63,6 @@ sensorSchema.methods.json = function (scope, args) {
         sensor_id: this.sensor_id,
         value: this.value,
         timestamp: Date.now()
-    }
+    };
 };
 module.exports = sensorSchema;
