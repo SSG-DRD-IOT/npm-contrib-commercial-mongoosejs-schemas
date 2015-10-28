@@ -56,7 +56,7 @@ describe("When a sensor is saved", function() {
 
         before (function() {
             Sensor.remove({}, function() {
-                console.log("Sensors cleared");
+              //  console.log("Sensors cleared");
             });
         });
 
@@ -93,6 +93,23 @@ describe("When a sensor is saved", function() {
         });
 
     });
+});
+
+describe("When a sensor is serialized", function() {
+    it("should be JSON", function(done) {
+        var sensor = new Sensor(sensor_fixtures.valid_sensor_1);
+        //            console.log(sensor.json());
+        expect(sensor.json()).to.deep.equal(
+            {
+                name: 'temperature',
+                description: 'A temperature sensor.',
+                maxfrequency: 1,
+                frequency: 1,
+                active: true,
+                ioType: 'aio'
+            });
+    });
+
 });
 
 // describe("When a sensor finds its data", function() {

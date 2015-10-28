@@ -60,9 +60,13 @@ var sensorSchema = new mongoose.Schema({
 
 sensorSchema.methods.json = function (scope, args) {
     return {
-        sensor_id: this.sensor_id,
-        value: this.value,
-        timestamp: Date.now()
+        name : this.name,
+        description: this.description,
+        maxfrequency: this.maxfrequency,
+        frequency: this.frequency,
+        active: this.active,
+        ioType: this.ioType
     };
 };
+
 module.exports = sensorSchema;

@@ -34,7 +34,7 @@ db.once('open', function (callback) {
 
 var TriggerModel = require('../index.js').TriggerModel;
 
-var promise = TriggerModel.find().select('name').exec();
+var promise = TriggerModel.find().exec();
 
 promise.then(function(triggers) {
   console.log(triggers);

@@ -39,4 +39,12 @@ var dataSchema = new mongoose.Schema({
     }
 });
 
+dataSchema.methods.json = function (scope, args) {
+    return {
+        sensor_id : this.sensor_id,
+        value: this.value,
+        timestamp: this.timestamp
+    };
+};
+
 module.exports = dataSchema;
