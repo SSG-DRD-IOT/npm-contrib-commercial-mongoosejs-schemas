@@ -56,7 +56,6 @@ var actuators = [
         "active": "true",
         "ioType": "digital"
     }
-
 ];
 
 var sensors = [
