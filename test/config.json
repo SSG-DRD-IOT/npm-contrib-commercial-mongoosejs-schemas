@@ -1,6 +1,3 @@
 {
-    "mongodb" : "mongodb://localhost/iotdemo-test",
-    "sqlite3" : {
-        "file" : "/industrial-demo/db/iotdemo.sqlite"
-    }
+  "mongodb": "mongodb://localhost/iotdemo-test"
 }
