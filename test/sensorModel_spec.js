@@ -28,7 +28,6 @@
 var config = require ('./config.json');
 var data_fixtures = require('../fixtures/data.js');
 var sensor_fixtures = require('../fixtures/sensor.js');
-var cloudprovider_fixtures = require('../fixtures/cloudprovider.js');
 
 // Load the export and should testing styles
 var chai = require('chai'),
@@ -38,12 +37,13 @@ var chai = require('chai'),
 // Connect to the MongoDB
 var mongoose = require('mongoose');
 var sensorSchema = require('../schema/sensorSchema.js');
-var cloudproviderSchema = require('../schema/cloudproviderSchema.js');
 var Sensor = mongoose.model('Sensor', sensorSchema);
-var CloudProvider = mongoose.model('CloudProvider', cloudproviderSchema);
 
 mongoose.connect(config.mongodb);
 var db = mongoose.connection;
+
+// set Promise provider to bluebird
+mongoose.Promise = require('bluebird');
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
@@ -111,74 +111,3 @@ describe("When a sensor is serialized", function() {
     });
 
 });
-
-// describe("When a sensor finds its data", function() {
-//     it("should return a piece of data and a timestamp", function() {
-//         Sensor.findData(function(data) {
-
-//         });
-//     });
-// });
-
-describe("When a sensor is associated with a cloud provider", function() {
-    describe("with valid data", function() {
-
-        before(function() {
-            Sensor.remove({}, function(err) {if (err) console.log(err);});
-            CloudProvider.remove({}, function(err) {if (err) console.log(err);});
-        });
-
-        it("should be successful", function(done) {
-            var sensor = new Sensor(sensor_fixtures.valid_sensor_1);
-
-            sensor.cloudproviders.push(cloudprovider_fixtures.microsoft);
-//            console.log(sensor);
-
-            sensor.save(function(err, sensor) {
-                try {
-                    Sensor.find({}, function(err, sensors) {
-                        if (err) console.log(err);
-                        console.log(err);
-                        expect(err).to.be.null;
-                        sensors.length.should.equal(1);
-                        console.log(sensors[0].cloudproviders.length);
-                        expect(sensors[0].cloudproviders.length).should.equal(1);
-                        expect(sensors[0].cloudproviders[0].name).should.equal("microsofdt");
-                        done();
-                    });
-
-                } catch( err ) {
-                    done( err );
-                }
-            });
-        });
-
-
-        it("there should be one cloudprovider stored with the sensor", function(done) {
-            var sensor = new Sensor(sensor_fixtures.valid_sensor_1);
-
-            sensor.cloudproviders.push(cloudprovider_fixtures.microsoft);
-            sensor.save(function(err, sensor) {
-                try {
-                    Sensor.find({}, function(err, sensors) {
-                        if (err) console.log(err);
-                        expect(err).to.be.empty;
-                        sensors.length.should.equal(1);
-                    });
-                    Sensor.findOne({}, function(s) {
-                        expect(s.cloudproviders).length.should.equal(1);
-                    });
-                    done();
-                } catch( err ) {
-                    done( err );
-                }
-            });
-        });
-
-    });
-});
-
-
-
-// describe("When a sensor is associated with a cloud", function() {
-// });

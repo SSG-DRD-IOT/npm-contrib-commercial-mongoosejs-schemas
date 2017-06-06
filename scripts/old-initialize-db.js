@@ -34,8 +34,6 @@ db.once('open', function (callback) {
 });
 
 // Import the Database Model Objects
-//var DataModel = require('intel-commerical-iot-database-models').DataModel;
-//var SensorCloudModel = require('intel-commerical-iot-database-models').SensorCloudModel;
 var TriggerModel = require('intel-commerical-iot-database-models').TriggerModel;
 var SensorModel = require('intel-commerical-iot-database-models').SensorModel;
 var ActuatorModel = require('intel-commerical-iot-database-models').ActuatorModel;

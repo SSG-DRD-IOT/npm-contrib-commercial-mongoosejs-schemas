@@ -1,36 +1,33 @@
 {
-    "mongodb" : {
-      "testHost" : "mongodb://localhost/iotdemo-test",
-      "prodHost" : "mongodb://localhost/iotdemo-prod"
+  "mongodb": {
+    "testHost": "mongodb://localhost/iotdemo-test",
+    "prodHost": "mongodb://localhost/iotdemo-prod"
+  },
+  "sensors": [
+    "temperature",
+    "light",
+    "sound"
+  ],
+  "sensor_ids": [
+    "sensor_1",
+    "sensor_2"
+  ],
+  "actuators": [
+    {
+      "id": "fan",
+      "ipaddress": "http://192.168.1.194:10010",
+      "name": "fan",
+      "description": "Decreases the temperature",
+      "active": "true",
+      "ioType": "digital"
     },
-    "sensors" : ["temperature", "light", "sound"],
-    "sensor_ids" : ["sensor_1", "sensor_2"],
-    "cloud_providers": [
-          {
-            "id" : "1",
-            "name" : "azure"
-          },
-          {
-            "id" : "2",
-            "name" : "bluemix"
-          }
-      ],
-    "actuators" : [
-        {
-            "id": "fan",
-            "ipaddress": "http://192.168.1.194:10010",
-            "name": "fan",
-            "description": "Decreases the temperature",
-            "active": "true",
-            "ioType": "digital"
-        },
-        {
-            "id": "light",
-            "ipaddress": "http://192.168.1.113:10010",
-            "name": "light",
-            "description": "Increases the temperature",
-            "active": "true",
-            "ioType": "digital"
-        }
-    ]
+    {
+      "id": "light",
+      "ipaddress": "http://192.168.1.113:10010",
+      "name": "light",
+      "description": "Increases the temperature",
+      "active": "true",
+      "ioType": "digital"
+    }
+  ]
 }

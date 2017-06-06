@@ -21,17 +21,23 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-var mongoose = require('mongoose');
-
-var sensorCloudSchema = new mongoose.Schema({
-    sensor_id : {
-        type: String,
-        required: true
+var fixtures = {
+    microsoft : {
+        id: "1",
+        name: "microsoft-azure"
     },
-    cloudprovider_id : {
-        type: String,
-        required: true
+    ibm : {
+        id: "2",
+        name: "ibm-bluemix"
+    },
+    google:{
+        id: "3",
+        name: "google-datastore"
+    },
+    amazon : {
+        id: "4",
+        name: "amazon-kinesis"
     }
-});
+};
 
-module.exports = sensorCloudSchema;
+module.exports = fixtures;

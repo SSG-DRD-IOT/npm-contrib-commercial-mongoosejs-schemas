@@ -22,7 +22,6 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 var mongoose = require('mongoose');
-var cloudproviderSchema = require('./cloudproviderSchema.js');
 
 var sensorSchema = new mongoose.Schema({
     id : {
@@ -54,8 +53,7 @@ var sensorSchema = new mongoose.Schema({
     ioType : {
         type: String,
         required: true
-    },
-    cloudproviders : [ cloudproviderSchema ]
+    }
 });
 
 sensorSchema.methods.json = function (scope, args) {

@@ -32,9 +32,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 // Import the Database Model Objects
-//var DataModel = require('../index.js').DataModel;
-//var SensorCloudModel = require('../index.js').SensorCloudModel;
-
 var TriggerModel = require('../index.js').TriggerModel;
 var SensorModel = require('../index.js').SensorModel;
 var ActuatorModel = require('../index.js').ActuatorModel;

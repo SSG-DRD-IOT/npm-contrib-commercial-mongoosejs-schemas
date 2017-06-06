@@ -37,8 +37,7 @@ module.exports = {
         "maxfrequency":"200",
         "frequency":"1000",
         "active":"true",
-        "ioType":"Analog",
-        "cloudproviders": config.cloud_providers
+        "ioType":"Analog"
       },
       {
         "id":"light",
@@ -47,8 +46,7 @@ module.exports = {
         "maxfrequency":"200",
         "frequency":"1000",
         "active":"true",
-        "ioType":"Analog",
-        "cloudproviders": config.cloud_providers
+        "ioType":"Analog"
       },
       {
         "id":"sound",
@@ -57,8 +55,7 @@ module.exports = {
         "maxfrequency":"200",
         "frequency":"1000",
         "active":"true",
-        "ioType":"Analog",
-        "cloudproviders": config.cloud_providers
+        "ioType":"Analog"
       }
     ];
     return sensors_table;
@@ -76,17 +73,6 @@ module.exports = {
       i++;
     }
     return result;
-  },
-
-  generateSensorCloudJSON : function() {
-    var model = [];
-    for(i=0;i<4;i++)
-    {
-      model.push({ sensor_id : _.sample(config.sensor_ids),
-        cloudprovider_id : _.sample(config.cloud_providers).id
-      });
-    }
-    return model;
   },
 
   generateActuatorJSON : function() {

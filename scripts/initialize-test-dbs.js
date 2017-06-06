@@ -32,7 +32,6 @@ var mongoose = require('mongoose');
 // Import the Database Model Objects
 var DataModel = require('../index.js').DataModel;
 var SensorModel = require('../index.js').SensorModel;
-var SensorCloudModel = require('../index.js').SensorCloudModel;
 var ActuatorModel = require('../index.js').ActuatorModel;
 var TriggerModel = require('../index.js').TriggerModel;
 
@@ -76,14 +75,6 @@ TriggerModel.remove({}, function(err) {
     console.log(err);
   } else {
     console.log('Removed all Data from TriggerModel');
-  }
-});
-
-SensorCloudModel.remove({}, function(err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('Removed all Data from SensorCloudModel');
   }
 });
 
@@ -149,21 +140,6 @@ data_json.forEach(function(row) {
     }
     else
     console.log("Wrote data to DataModel:");
-    console.log(data);
-  });
-});
-
-var relation_json = utils.generateSensorCloudJSON();
-console.log("Sensor Cloud Model : ");
-// console.log(JSON.stringify(relation_json, null, '  '));
-
-relation_json.forEach(function(row) {
-  var relation = new SensorCloudModel(row);
-  relation.save(function(err, data) {
-    if (err)
-    console.log(err);
-    else
-    console.log("Wrote data to SensorCloudModel:");
     console.log(data);
   });
 });

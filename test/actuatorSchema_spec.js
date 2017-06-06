@@ -28,7 +28,6 @@
 var config = require ('./config.json');
 var data_fixtures = require('../fixtures/data.js');
 var sensor_fixtures = require('../fixtures/sensor.js');
-var cloudprovider_fixtures = require('../fixtures/cloudprovider.js');
 
 // Load the export and should testing styles
 var chai = require('chai'),
@@ -39,10 +38,8 @@ var chai = require('chai'),
 var mongoose = require('mongoose');
 var sensorSchema = require('../schema/sensorSchema.js');
 var actuatorSchema = require('../schema/actuatorSchema.js');
-var cloudproviderSchema = require('../schema/cloudproviderSchema.js');
 var Sensor = mongoose.model('Sensor', sensorSchema);
 var Actuator = mongoose.model('Actuator', actuatorSchema);
-var CloudProvider = mongoose.model('CloudProvider', cloudproviderSchema);
 
 mongoose.connect(config.mongodb);
 var db = mongoose.connection;
