@@ -30,10 +30,10 @@ var utils = require("./utils.js");
 var mongoose = require('mongoose');
 
 // Import the Database Model Objects
-var DataModel = require('../index.js').DataModel;
-var SensorModel = require('../index.js').SensorModel;
+var Data = require('../index.js').Data;
+var Sensor = require('../index.js').Sensor;
 var ActuatorModel = require('../index.js').ActuatorModel;
-var TriggerModel = require('../index.js').TriggerModel;
+var Trigger = require('../index.js').Trigger;
 
 mongoose.connect(config.mongodb.testHost);
 var db = mongoose.connection;
@@ -46,19 +46,19 @@ db.once('open', function (callback) {
   console.info("Connection to MongoDB successful");
 });
 
-SensorModel.remove({}, function(err) {
+Sensor.remove({}, function(err) {
   if (err) {
     console.log(err);
   } else {
-    console.log('Removed all Data from SensorModel');
+    console.log('Removed all Data from Sensor');
   }
 });
 
-DataModel.remove({}, function(err) {
+Data.remove({}, function(err) {
   if (err) {
     console.log(err);
   } else {
-    console.log('Removed all Data from DataModel');
+    console.log('Removed all Data from Data');
   }
 });
 
@@ -70,11 +70,11 @@ ActuatorModel.remove({}, function(err) {
   }
 });
 
-TriggerModel.remove({}, function(err) {
+Trigger.remove({}, function(err) {
   if (err) {
     console.log(err);
   } else {
-    console.log('Removed all Data from TriggerModel');
+    console.log('Removed all Data from Trigger');
   }
 });
 
@@ -99,12 +99,12 @@ console.log("Sensor Model : ");
 console.log(JSON.stringify(trigger_json, null, '  '));
 
 trigger_json.forEach(function(row) {
-  var trigger = new TriggerModel(row);
+  var trigger = new Trigger(row);
   trigger.save(function(err, trigger) {
     if (err)
     console.log(err);
     else{
-      console.log("Wrote sensor to TriggerModel:");
+      console.log("Wrote sensor to Trigger:");
       console.log(trigger);
     }
   });
@@ -116,12 +116,12 @@ console.log("Sensor Model : ");
 console.log(JSON.stringify(sensor_json, null, '  '));
 
 sensor_json.forEach(function(row) {
-  var sensor = new SensorModel(row);
+  var sensor = new Sensor(row);
   sensor.save(function(err, sensor) {
     if (err)
     console.log(err);
     else
-    console.log("Wrote sensor to SensorModel:" + sensor.toString());
+    console.log("Wrote sensor to Sensor:" + sensor.toString());
   });
 });
 
@@ -129,7 +129,7 @@ var data_json = utils.generateDataJSON(10);
 console.log("Data Model : ");
 
 data_json.forEach(function(row) {
-  var value = new DataModel(row);
+  var value = new Data(row);
   // console.log(JSON.stringify(row, null, '  '));
 
   value.save(function(err, data) {
@@ -139,7 +139,7 @@ data_json.forEach(function(row) {
       console.log(err);
     }
     else
-    console.log("Wrote data to DataModel:");
+    console.log("Wrote data to Data:");
     console.log(data);
   });
 });

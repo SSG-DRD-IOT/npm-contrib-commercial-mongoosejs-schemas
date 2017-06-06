@@ -32,8 +32,8 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 // Import the Database Model Objects
-var TriggerModel = require('../index.js').TriggerModel;
-var SensorModel = require('../index.js').SensorModel;
+var Trigger = require('../index.js').Trigger;
+var Sensor = require('../index.js').Sensor;
 var ActuatorModel = require('../index.js').ActuatorModel;
 
 var actuators = [
@@ -152,11 +152,11 @@ var triggers = [
 db.once('open', function (callback) {
     console.log("Connection to MongoDB successful");
 
-TriggerModel.remove({}, function() {
+Trigger.remove({}, function() {
     console.log("Removing document");
 });
 
-SensorModel.remove({},  function() {
+Sensor.remove({},  function() {
    console.log("Removing document");
 });
 
@@ -166,7 +166,7 @@ ActuatorModel.remove({},  function() {
 
     _.forEach(triggers,
               function(triggerJSON) {
-                  var trigger = new TriggerModel(triggerJSON);
+                  var trigger = new Trigger(triggerJSON);
                   console.log(trigger);
                   trigger.save(function(err) {
                       console.log("Trigger Saved");
@@ -178,7 +178,7 @@ ActuatorModel.remove({},  function() {
 
     _.forEach(sensors,
               function(sensorJSON) {
-                  var sensor = new SensorModel(sensorJSON);
+                  var sensor = new Sensor(sensorJSON);
                   sensor.save(function(err) {
                       if (err) console.log(err);
                   });

@@ -28,8 +28,8 @@ var _ = require("lodash");
 var mongoose = require('mongoose');
 
 // Import the Database Model Objects
-var DataModel = require('intel-commerical-iot-database-models').DataModel;
-var SensorModel = require('intel-commerical-iot-database-models').SensorModel;
+var Data = require('intel-commerical-iot-database-models').Data;
+var Sensor = require('intel-commerical-iot-database-models').Sensor;
 
 mongoose.connect(config.mongodb.prodHost);
 var db = mongoose.connection;
@@ -44,7 +44,7 @@ db.once('open', function (callback) {
 
 var json = {};
 
-var sensor = new SensorModel(json);
+var sensor = new Sensor(json);
 sensor.save(function(err, sensor) {
   if (err)
   logger.error(err);
@@ -52,7 +52,7 @@ sensor.save(function(err, sensor) {
   logger.trace("Wrote sensor to db:" + sensor.toString());
 });
 
-var value = new DataModel(json);
+var value = new Data(json);
 value.save(function(err, data) {
   if (err)
   logger.error(err);

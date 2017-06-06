@@ -32,9 +32,9 @@ db.once('open', function (callback) {
     console.log("Connection to MongoDB successful");
 });
 
-var TriggerModel = require('../index.js').TriggerModel;
+var Trigger = require('../index.js').Trigger;
 
-var promise = TriggerModel.find().exec();
+var promise = Trigger.find().exec();
 
 promise.then(function(triggers) {
   console.log(triggers);

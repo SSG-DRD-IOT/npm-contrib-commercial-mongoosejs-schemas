@@ -34,8 +34,8 @@ db.once('open', function (callback) {
 });
 
 // Import the Database Model Objects
-var TriggerModel = require('intel-commerical-iot-database-models').TriggerModel;
-var SensorModel = require('intel-commerical-iot-database-models').SensorModel;
+var Trigger = require('intel-commerical-iot-database-models').Trigger;
+var Sensor = require('intel-commerical-iot-database-models').Sensor;
 var ActuatorModel = require('intel-commerical-iot-database-models').ActuatorModel;
 
 var actuators = [
@@ -146,11 +146,11 @@ var triggers = [
 
 
 console.log(sensors);
-TriggerModel.remove({}, function() {
+Trigger.remove({}, function() {
     //    console.log("Removing document");
 });
 
-SensorModel.remove({},  function() {
+Sensor.remove({},  function() {
     //    console.log("Removing document");
 });
 
@@ -160,7 +160,7 @@ ActuatorModel.remove({},  function() {
 
 _.forEach(triggers,
           function(triggerJSON) {
-              var trigger = new TriggerModel(triggerJSON);
+              var trigger = new Trigger(triggerJSON);
               trigger.save(function(err) {
                   if (err) console.log(err);
               });
@@ -169,7 +169,7 @@ _.forEach(triggers,
 
 _.forEach(sensors,
           function(sensorJSON) {
-              var sensor = new SensorModel(sensorJSON);
+              var sensor = new Sensor(sensorJSON);
               sensor.save(function(err) {
                   if (err) console.log(err);
               });
