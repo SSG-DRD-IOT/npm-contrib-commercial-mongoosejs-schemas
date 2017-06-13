@@ -34,7 +34,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 // Import the Database Model Objects
 var Trigger = require('../index.js').Trigger;
 var Sensor = require('../index.js').Sensor;
-var ActuatorModel = require('../index.js').ActuatorModel;
+var Actuator = require('../index.js').Actuator;
 
 var actuators = [
     {
@@ -160,7 +160,7 @@ Sensor.remove({},  function() {
    console.log("Removing document");
 });
 
-ActuatorModel.remove({},  function() {
+Actuator.remove({},  function() {
    console.log("Removing document");
 });
 
@@ -187,7 +187,7 @@ ActuatorModel.remove({},  function() {
 
     _.forEach(actuators,
               function(JSON) {
-                  var rec = new ActuatorModel(JSON);
+                  var rec = new Actuator(JSON);
                   rec.save(function(err) {
                       if (err) console.log(err);
                   });

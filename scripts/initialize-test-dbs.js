@@ -32,7 +32,7 @@ var mongoose = require('mongoose');
 // Import the Database Model Objects
 var Data = require('../index.js').Data;
 var Sensor = require('../index.js').Sensor;
-var ActuatorModel = require('../index.js').ActuatorModel;
+var Actuator = require('../index.js').Actuator;
 var Trigger = require('../index.js').Trigger;
 
 mongoose.connect(config.mongodb.testHost);
@@ -62,11 +62,11 @@ Data.remove({}, function(err) {
   }
 });
 
-ActuatorModel.remove({}, function(err) {
+Actuator.remove({}, function(err) {
   if (err) {
     console.log(err);
   } else {
-    console.log('Removed all Data from ActuatorModel');
+    console.log('Removed all Data from Actuator');
   }
 });
 
@@ -83,12 +83,12 @@ console.log("Actuator Model : ");
 console.log(JSON.stringify(actuator_json, null, '  '));
 
 actuator_json.forEach(function(row) {
-  var actuator = new ActuatorModel(row);
+  var actuator = new Actuator(row);
   actuator.save(function(err, actuator) {
     if (err)
     console.log(err);
     else {
-      console.log("Wrote actuator to ActuatorModel:");
+      console.log("Wrote actuator to Actuator:");
       console.log(actuator);
     }
   });
