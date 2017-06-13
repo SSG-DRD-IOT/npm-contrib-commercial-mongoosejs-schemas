@@ -32,7 +32,7 @@ db.once('open', function (callback) {
     console.log("Connection to MongoDB successful");
 });
 
-var Sensor = require('intel-commerical-iot-database-models').Sensor;
+var Sensor = require('intel-commercial-iot-database-models').Sensor;
 
 Sensor.find({}, function (err, triggers) {
     console.log(triggers);

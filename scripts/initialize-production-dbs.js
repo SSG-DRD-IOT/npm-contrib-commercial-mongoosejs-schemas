@@ -28,8 +28,8 @@ var _ = require("lodash");
 var mongoose = require('mongoose');
 
 // Import the Database Model Objects
-var Data = require('intel-commerical-iot-database-models').Data;
-var Sensor = require('intel-commerical-iot-database-models').Sensor;
+var Data = require('intel-commercial-iot-database-models').Data;
+var Sensor = require('intel-commercial-iot-database-models').Sensor;
 
 mongoose.connect(config.mongodb.prodHost);
 var db = mongoose.connection;
